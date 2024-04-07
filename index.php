@@ -76,7 +76,7 @@ echo "Подключено"
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-size: 18px;
+            font-size: 20px;
             color:#ffffff;
             margin-right: -5px;
         }
