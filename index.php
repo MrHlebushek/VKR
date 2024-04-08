@@ -66,23 +66,6 @@ echo "Подключено"
             max-width: 100%;
             max-height: 100%;
         }
-        .menu {
-            display: flex;
-            flex-grow: 1;
-            justify-content: flex-end;
-        }
-        .menu-item {
-            padding: 30px 50px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 20px;
-            color:#ffffff;
-            margin-right: -5px;
-        }
-        .menu-item:hover {
-            background-color: #0099cc;
-        }
         .slider {
             position: relative;
             width: 85%;
@@ -177,6 +160,49 @@ echo "Подключено"
             top: 20px;
             right: 20px;
         }
+        .auth_link {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .login-button {
+            padding: 30px 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #003366;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #005599;
+        }
+        .menu {
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .menu-button {
+            display: block;
+            padding: 39px 45px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 18px;
+            color: #ffffff;
+            background-color: transparent;
+        }
+        .menu-button:hover {
+            background-color: #005599;
+        }
+        .menu-button a {
+            color: #ffffff
+            text-decoration: none;
+            display: block; 
+            width: 100%; 
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -186,11 +212,11 @@ echo "Подключено"
         </div>
         <div class="welcome-text">Добро пожаловать в HHT! Грузим грузы!</div>
         <div class="menu">
-            <div class="menu-item">Главная</div>
-            <div class="menu-item">О нас</div>
-            <div class="menu-item">Новости</div>
-            <div class="menu-item">Контакты</div>
-            <div class="menu-item">Вход</div>
+            <a class="auth_link" href="/VKR/index.php"><button class="menu-button">Главная</button></a>
+            <button class="menu-button">О нас</button>
+            <button class="menu-button">Новости</button>
+            <button class="menu-button">Контакты</button>
+            <a class="auth_link" href="/VKR/scripts/authorization.php"><button class="menu-button">Вход</button></a>
         </div>
     </div>
     <div class="slider">
