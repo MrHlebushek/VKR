@@ -147,7 +147,7 @@ if ($_SESSION["position"] != "admin") {
     <div class="login-form">
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <div class="login-form"> <form> <div style="display: flex; flex-direction: column; align-items: center;"> <div style="text-align: center; margin-bottom: 20px;"> <p style="font-size: 18px; font-weight: bold;">Почему так пусто?</p> <p style="font-size: 14px;">В скором времени здесь появяться доступные Вам функции!</p> </div>
+            <div class="login-form"> <form> <div style="display: flex; flex-direction: column; align-items: center;"> <div style="text-align: center; margin-bottom: 20px;"> <p style="font-size: 18px; font-weight: bold;">Почему тут так пусто?</p> <p style="font-size: 14px;">В скором времени здесь появяться доступные Вам функции!</p> </div>
     </form>
 </div>
     <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
