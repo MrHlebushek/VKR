@@ -27,7 +27,7 @@
             justify-content: space-between;
             padding: 0 20px;
         }
-        .logo {
+        .logo1 {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -40,15 +40,16 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            overflow: hidden;
         }
         .welcome-text {
             color: #ffffff;
             font-size: 42px;
             margin-left: 250px;
         }
-        .logo img {
+        .logo1 img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: auto;
         }
         .login-form {
             position: absolute;
@@ -123,8 +124,8 @@
 </head>
 <body>
     <div class="header">
-        <div class="logo">
-            <img src="logo.png" alt="Логотип компании">
+        <div class="logo1">
+            <img src="logo1.png" alt="Логотип компании">
         </div>
         <div class="welcome-text">Вход в аккаунт</div>
         <div class="menu">
