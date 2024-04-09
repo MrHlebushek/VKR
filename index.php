@@ -43,7 +43,7 @@ echo "Подключено"
             justify-content: space-between;
             padding: 0 20px;
         }
-        .logo {
+        .logo1 {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -56,15 +56,16 @@ echo "Подключено"
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            overflow: hidden;
         }
         .welcome-text {
             color: #ffffff;
             font-size: 42px;
             margin-left: 250px;
         }
-        .logo img {
+        .logo1 img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: auto;
         }
         .slider {
             position: relative;
@@ -207,8 +208,8 @@ echo "Подключено"
 </head>
 <body>
     <div class="header">
-        <div class="logo">
-            <img src="logo.png" alt="Логотип компании">
+        <div class="logo1">
+            <img src="logo1.png" alt="Логотип компании">
         </div>
         <div class="welcome-text">Добро пожаловать в HHT! Грузим грузы!</div>
         <div class="menu">
@@ -239,6 +240,9 @@ echo "Подключено"
     </div>
     <script>
         let currentSlide = 1;
+        let sliderInterval;
+        let touchStartX;
+        let touchEndX;
         function showSlide(n) {
             let slides = document.querySelectorAll('.slide');
             let dots = document.querySelectorAll('.slider-dot');
@@ -280,6 +284,7 @@ echo "Подключено"
         let sliderArrows = document.querySelectorAll('.slider-arrow');
         sliderArrows.forEach((arrow) => {
             arrow.addEventListener('click', () => {
+                clearInterval(sliderInterval);
                 if (arrow.classList.contains('left')) {
                     prevSlide();
                 } else {
@@ -287,7 +292,45 @@ echo "Подключено"
                 }
             });
         });
-        setInterval(nextSlide, 5000);
+        function startSlider() {
+            sliderInterval = setInterval(nextSlide, 5000);
+        }
+        startSlider();
+        let slider = document.querySelector('.slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(sliderInterval);
+        });
+        slider.addEventListener('mouseleave', () => {
+            startSlider();
+        });
+        slider.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                clearInterval(sliderInterval);
+                prevSlide();
+                startSlider();
+            } else if (event.key === 'ArrowRight') {
+                clearInterval(sliderInterval);
+                nextSlide();
+                startSlider();
+            }
+        });
+        slider.addEventListener('touchstart', (event) => {
+            touchStartX = event.changedTouches[0].clientX;
+        });
+        slider.addEventListener('touchmove', (event) => {
+            touchEndX = event.changedTouches[0].clientX;
+        });
+        slider.addEventListener('touchend', () => {
+            if (touchStartX > touchEndX) {
+                clearInterval(sliderInterval);
+                nextSlide();
+                startSlider();
+            } else if (touchStartX < touchEndX) {
+                clearInterval(sliderInterval);
+                prevSlide();
+                startSlider();
+            }
+        });
     </script>
 </body>
 </html>
