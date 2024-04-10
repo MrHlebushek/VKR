@@ -165,6 +165,13 @@ $conn->close();
             color: #ccc;
             font-style: italic;
         }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px; 
+            z-index: 20;
+        }
     </style>
 </head>
 <body>
@@ -194,6 +201,6 @@ $conn->close();
         </div>
     </form>
 </div>
-<?php if (isset($error)) { echo "<p>$error</p>"; } ?>
+<?php if (isset($error)) { echo "<p class='error-message'>$error</p>"; } ?>
 </body>
 </html>
