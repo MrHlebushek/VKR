@@ -1,3 +1,48 @@
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vkr_base";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT position FROM users WHERE login = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $position = $row["position"];
+
+        $_SESSION["position"] = $position;
+
+        if ($position == "admin") {
+            header("Location: users/admin.php");
+            exit;
+        } elseif ($position == "accountant") {
+            header("Location: users/accountant.php");
+            exit;
+        } elseif ($position == "HR") {
+            header("Location: users/hr.php");
+            exit;
+        }
+    } else {
+        $error = "Неверные учетные данные. Пожалуйста, попробуйте еще раз!";
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,5 +194,6 @@
         </div>
     </form>
 </div>
+<?php if (isset($error)) { echo "<p>$error</p>"; } ?>
 </body>
 </html>
